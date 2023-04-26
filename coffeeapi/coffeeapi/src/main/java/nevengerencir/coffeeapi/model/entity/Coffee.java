@@ -1,4 +1,4 @@
-package nevengerencir.coffeeapi.entity;
+package nevengerencir.coffeeapi.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

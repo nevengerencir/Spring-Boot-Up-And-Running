@@ -1,6 +1,7 @@
 package nevengerencir.coffeeapi.controller;
 
-import nevengerencir.coffeeapi.entity.Coffee;
+import nevengerencir.coffeeapi.model.DTO.Greeting;
+import nevengerencir.coffeeapi.model.entity.Coffee;
 import nevengerencir.coffeeapi.repository.CoffeeRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +14,12 @@ import java.util.Optional;
 @RequestMapping("/coffees")
 
 public class CoffeeController {
+    private final Greeting greeting;
+
     private final CoffeeRepository coffeeRepository;
 
-    public CoffeeController(CoffeeRepository coffeeRepository) {
+    public CoffeeController(Greeting greeting, CoffeeRepository coffeeRepository) {
+        this.greeting = greeting;
         this.coffeeRepository = coffeeRepository;
 
         this.coffeeRepository.saveAll(List.of(
@@ -48,5 +52,9 @@ public class CoffeeController {
     @DeleteMapping("/{id}")
     void deleteCoffee(@PathVariable String id) {
         coffeeRepository.deleteById(id);
+    }
+    @GetMapping("/greeting")
+    String getGreeting(){
+        return greeting.getName();
     }
 }
