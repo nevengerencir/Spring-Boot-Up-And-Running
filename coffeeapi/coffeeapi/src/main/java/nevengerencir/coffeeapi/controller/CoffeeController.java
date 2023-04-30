@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,11 +24,7 @@ public class CoffeeController {
         this.greeting = greeting;
         this.coffeeRepository = coffeeRepository;
 
-        this.coffeeRepository.saveAll(List.of(
-                new Coffee("Kenya"),
-                new Coffee("Ethiopia"),
-                new Coffee("Honduras")
-                ));
+        this.coffeeRepository.saveAll(List.of(new Coffee("Kenya"), new Coffee("Ethiopia"), new Coffee("Honduras")));
     }
 
     @GetMapping
@@ -41,6 +39,7 @@ public class CoffeeController {
 
     @PostMapping
     Coffee postCoffee(@RequestBody Coffee coffee) {
+        coffee.setDate_exp(new Date());
         return coffeeRepository.save(coffee);
     }
 
@@ -53,8 +52,9 @@ public class CoffeeController {
     void deleteCoffee(@PathVariable String id) {
         coffeeRepository.deleteById(id);
     }
+
     @GetMapping("/greeting")
-    String getGreeting(){
+    String getGreeting() {
         return greeting.getName();
     }
 }
