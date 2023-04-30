@@ -27,15 +27,17 @@ public class Coffee {
     @GeneratedValue(strategy = GenerationType.TABLE , generator = "key_generator")
     private Integer id;
     private String name;
+    @Column(name = "roast_date")
     @Temporal(TemporalType.DATE)
-    private Date date_exp;
+    private Date date_roast;
 
-    @Enumerated(EnumType.STRING)
-   private Roast getRoast() {
-        return roast;
+    public Coffee(String name, Date date_exp) {
+        this.name = name;
+        this.date_roast = date_exp;
     }
 
-    private Roast roast;
+    @Enumerated(EnumType.STRING)
+    private final Roast roast = Roast.LIGHT;
     public String getName() {
         return name;
     }
@@ -44,20 +46,14 @@ public class Coffee {
         this.name = name;
     }
 
-    public Date getDate_exp() {
-        return date_exp;
+
+    public Date getDate_roast() {
+        return date_roast;
     }
 
-    public void setDate_exp(Date date_exp) {
-        this.date_exp = date_exp;
+    public void setDate_roast(Date date_roast) {
+        this.date_roast = date_roast;
     }
-
-    public Coffee(String name) {
-        this.name = name;
-
-    }
-
-
 
     public Coffee() {
     }

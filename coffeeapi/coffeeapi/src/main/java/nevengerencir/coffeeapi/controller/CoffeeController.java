@@ -24,7 +24,7 @@ public class CoffeeController {
         this.greeting = greeting;
         this.coffeeRepository = coffeeRepository;
 
-        this.coffeeRepository.saveAll(List.of(new Coffee("Kenya"), new Coffee("Ethiopia"), new Coffee("Honduras")));
+        this.coffeeRepository.saveAll(List.of(new Coffee("Kenya",new Date()), new Coffee("Ethiopia",new Date()), new Coffee("Honduras",new Date())));
     }
 
     @GetMapping
