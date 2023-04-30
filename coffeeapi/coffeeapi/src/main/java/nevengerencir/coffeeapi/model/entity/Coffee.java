@@ -1,6 +1,7 @@
 package nevengerencir.coffeeapi.model.entity;
 
 import jakarta.persistence.*;
+import nevengerencir.coffeeapi.model.entity.enums.Roast;
 
 import java.util.UUID;
 
@@ -24,7 +25,12 @@ public class Coffee {
     @GeneratedValue(strategy = GenerationType.TABLE , generator = "key_generator")
     private Integer id;
     private String name;
+    @Enumerated(EnumType.STRING)
+   private Roast getRoast() {
+        return roast;
+    }
 
+    private Roast roast;
     public String getName() {
         return name;
     }
