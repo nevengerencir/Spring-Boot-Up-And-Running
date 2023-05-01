@@ -37,5 +37,8 @@ public class Customer {
     }
 
     @Embedded
+    @AttributeOverride(name = "name", column = @Column(name = "street_name"))
+    @AttributeOverride(name = "number", column = @Column(name = "street_number"))
+
     private Address address;
 }

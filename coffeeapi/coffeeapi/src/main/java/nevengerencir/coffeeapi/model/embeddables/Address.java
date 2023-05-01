@@ -5,9 +5,9 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Address {
-    @Column(name = "street_name")
+
     private String name;
-    @Column(name = "street_number")
+
     private int number;
     private String city;
 
