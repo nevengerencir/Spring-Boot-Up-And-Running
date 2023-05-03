@@ -37,6 +37,7 @@ public class CoffeeController {
         details.setRoaster("Neven");
         details.setRoastingDate(new Date());
         details.setCoffee(coffee);
+        coffee.setRoastingDetails(details);
         roastingDetailsRepository.save(details);
 
 //        this.coffeeRepository.saveAll(List.of(new Coffee("Kenya",new Date()), new Coffee("Ethiopia",new Date()), new Coffee("Honduras",new Date())));

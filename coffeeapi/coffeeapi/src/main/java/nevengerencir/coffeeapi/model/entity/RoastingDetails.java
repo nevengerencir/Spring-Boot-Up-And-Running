@@ -1,13 +1,16 @@
 package nevengerencir.coffeeapi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import nevengerencir.coffeeapi.model.entity.enums.Roast;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "roasting_details")
-public class RoastingDetails {
+public class RoastingDetails implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +25,9 @@ public class RoastingDetails {
         this.coffee = coffee;
     }
 
-    @OneToOne( cascade = CascadeType.PERSIST)
+
+    @OneToOne( cascade = CascadeType.ALL)
+    @JsonBackReference
     private Coffee coffee;
     @Enumerated(EnumType.STRING)
     private final Roast type = Roast.LIGHT;

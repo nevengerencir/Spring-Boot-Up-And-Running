@@ -1,14 +1,17 @@
 package nevengerencir.coffeeapi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import nevengerencir.coffeeapi.model.entity.enums.Roast;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-public class Coffee {
+public class Coffee  implements Serializable {
     public Integer getId() {
         return id;
     }
@@ -27,6 +30,19 @@ public class Coffee {
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "key_generator")
     private Integer id;
     private String name;
+
+    public RoastingDetails getRoastingDetails() {
+        return roastingDetails;
+    }
+
+    public void setRoastingDetails(RoastingDetails roastingDetails) {
+        this.roastingDetails = roastingDetails;
+    }
+
+    @OneToOne(mappedBy = "coffee")
+    @JsonManagedReference
+
+    private RoastingDetails roastingDetails;
 
 
     public String getName() {
