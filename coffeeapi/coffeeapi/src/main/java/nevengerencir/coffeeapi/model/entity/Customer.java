@@ -40,11 +40,11 @@ public class Customer {
         this.city = city;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
@@ -60,7 +60,7 @@ public class Customer {
     private String city;
     @Column(table = "address")
 
-    private int number;
+    private Integer number;
     @Column(table = "address", name = "name")
 
     private String street_name;

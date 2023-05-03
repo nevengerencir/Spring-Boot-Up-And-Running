@@ -2,12 +2,13 @@ package nevengerencir.coffeeapi.controller;
 
 import nevengerencir.coffeeapi.model.entity.Customer;
 import nevengerencir.coffeeapi.repository.CustomerRepository;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/customer")
 public class CustomerController {
     private final CustomerRepository customerRepository;
 
@@ -15,7 +16,15 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-    public Optional<Customer> getCustomerRepository(@RequestParam String id) {
+
+    @GetMapping("/{id}")
+    public Optional<Customer> getCustomerById(@PathVariable String id) {
         return customerRepository.findById(Integer.valueOf(id));
     }
+    @GetMapping
+    public Iterable<Customer> getAllCustomers(){
+        return customerRepository.findAll();
+    }
+
 }
+
