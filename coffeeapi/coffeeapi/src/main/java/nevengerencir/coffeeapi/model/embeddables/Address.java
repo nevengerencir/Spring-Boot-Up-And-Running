@@ -1,12 +1,15 @@
 package nevengerencir.coffeeapi.model.embeddables;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.*;
 
-@Embeddable
+
 public class Address {
 
+
+
     private String name;
+
+
 
     private int number;
     private String city;

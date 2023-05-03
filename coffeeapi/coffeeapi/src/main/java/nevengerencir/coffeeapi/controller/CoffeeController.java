@@ -28,14 +28,12 @@ public class CoffeeController {
         this.coffeeRepository = coffeeRepository;
         this.customerRepository = customerRepository;
 
-        this.coffeeRepository.saveAll(List.of(new Coffee("Kenya",new Date()), new Coffee("Ethiopia",new Date()), new Coffee("Honduras",new Date())));
+//        this.coffeeRepository.saveAll(List.of(new Coffee("Kenya",new Date()), new Coffee("Ethiopia",new Date()), new Coffee("Honduras",new Date())));
         Customer customerTest = new Customer();
-        Address testAddress = new Address();
-        testAddress.setName("Italielei");
-        testAddress.setNumber(23);
-        testAddress.setCity("Antwerpen");
-        customerTest.setName("Normo Coffee");
-        customerTest.setAddress(testAddress);
+customerTest.setStreet_name("Viska 28");
+customerTest.setCity("Antwerp");
+customerTest.setNumber(23);
+customerTest.setName("Normo Coffee");
         this.customerRepository.save(customerTest);
 
     }

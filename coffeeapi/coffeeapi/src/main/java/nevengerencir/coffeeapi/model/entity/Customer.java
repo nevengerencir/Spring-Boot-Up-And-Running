@@ -4,9 +4,11 @@ import jakarta.persistence.*;
 import nevengerencir.coffeeapi.model.embeddables.Address;
 
 @Entity
+@SecondaryTable(name = "address", pkJoinColumns = @PrimaryKeyJoinColumn(name = "customer"))
+
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE , generator = "key_generator")
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
 
     public String getName() {
@@ -16,29 +18,50 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
-
-    @Column(name = "client_name")
-
     private String name;
 
     public Customer() {
     }
 
 
-
-
-
-    public Address getAddress() {
-        return address;
+    public Integer getId() {
+        return id;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    @Embedded
-    @AttributeOverride(name = "name", column = @Column(name = "street_name"))
-    @AttributeOverride(name = "number", column = @Column(name = "street_number"))
+    public String getCity() {
+        return city;
+    }
 
-    private Address address;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public String getStreet_name() {
+        return street_name;
+    }
+
+    public void setStreet_name(String street_name) {
+        this.street_name = street_name;
+    }
+
+@Column(table = "address")
+    private String city;
+    @Column(table = "address")
+
+    private int number;
+    @Column(table = "address", name = "name")
+
+    private String street_name;
 }
