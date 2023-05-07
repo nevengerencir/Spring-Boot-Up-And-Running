@@ -39,7 +39,7 @@ public class Coffee  implements Serializable {
         this.roastingDetails = roastingDetails;
     }
 
-    @OneToOne(mappedBy = "coffee")
+    @OneToOne(mappedBy = "coffee",cascade = CascadeType.ALL)
     @JsonManagedReference
 
     private RoastingDetails roastingDetails;

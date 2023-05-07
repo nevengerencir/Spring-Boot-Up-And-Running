@@ -7,6 +7,7 @@ import nevengerencir.coffeeapi.model.entity.RoastingDetails;
 import nevengerencir.coffeeapi.repository.CoffeeRepository;
 import nevengerencir.coffeeapi.repository.CustomerRepository;
 import nevengerencir.coffeeapi.repository.RoastingDetailsRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -62,6 +63,7 @@ public class CoffeeController {
 
     @PostMapping
     Coffee postCoffee(@RequestBody Coffee coffee) {
+        coffee.getRoastingDetails().setRoastingDate(new Date());
         return coffeeRepository.save(coffee);
     }
 
