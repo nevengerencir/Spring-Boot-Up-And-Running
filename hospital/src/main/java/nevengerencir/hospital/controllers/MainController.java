@@ -2,6 +2,7 @@ package nevengerencir.hospital.controllers;
 
 import nevengerencir.hospital.entities.Doctor;
 import nevengerencir.hospital.entities.Patient;
+import nevengerencir.hospital.model.Visitor;
 import nevengerencir.hospital.repos.PatientRepo;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +13,13 @@ import java.util.Optional;
 @RequestMapping("/hospital")
 public class MainController {
     private final PatientRepo patientRepo;
+    private final Visitor visitor;
 
 
 
-    public MainController(PatientRepo patientRepo) {
+    public MainController(PatientRepo patientRepo, Visitor visitor) {
         this.patientRepo = patientRepo;
+        this.visitor = visitor;
         Patient patient1 = new Patient();
         Patient patient2 = new Patient();
         Doctor doctor = new Doctor();
@@ -35,4 +38,9 @@ public class MainController {
     public Optional<Patient> findById(@PathVariable  String id){
         return patientRepo.findById(Integer.valueOf(id));
     }
+    @GetMapping("/visitor")
+    public Visitor getVisitor(){
+        return visitor;
+    }
 }
+
