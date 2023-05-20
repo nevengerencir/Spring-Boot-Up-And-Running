@@ -17,13 +17,13 @@ public class UserController {
 
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
-        User user = new User();
-        Adress adress = new Adress();
-        adress.setName("Erwtenstraat");
-        adress.setNumber(14);
-        user.setAdress(adress);
-        user.setName("Neven");
-        userRepository.save(user);
+//        User user = new User();
+//        Adress adress = new Adress();
+//        adress.setName("Erwtenstraat");
+//        adress.setNumber(14);
+//        user.setAdress(adress);
+//        user.setName("Neven");
+//        userRepository.save(user);
     }
 
     @GetMapping("/{id}")

@@ -21,16 +21,16 @@ import java.util.Optional;
 
         public PatientController(PatientRepository patientRepository) {
             this.patientRepository = patientRepository;
-            Doctor doctor = new Doctor();
-            doctor.setName("Marko");
-            Patient patient1 = new Patient();
-            Patient patient2 = new Patient();
-
-            patient1.setName("Lucas");
-            patient2.setName("Ivan");
-            patient1.setDoctor(doctor);
-            patient2.setDoctor(doctor);
-            patientRepository.saveAll(List.of(patient2,patient1));
+//            Doctor doctor = new Doctor();
+//            doctor.setName("Marko");
+//            Patient patient1 = new Patient();
+//            Patient patient2 = new Patient();
+//
+//            patient1.setName("Lucas");
+//            patient2.setName("Ivan");
+//            patient1.setDoctor(doctor);
+//            patient2.setDoctor(doctor);
+//            patientRepository.saveAll(List.of(patient2,patient1));
         }
 
 
